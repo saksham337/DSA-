@@ -1,3 +1,22 @@
+https://leetcode.com/problems/sort-array-by-parity/
+//classic two pointer started with 0 th index fix one pointer with condition and then swap with another just like fixing at the even index if the condition of even is satisfied then swap only 
+class Solution {
+    public int[] sortArrayByParity(int[] nums) {
+        int n = nums.length;
+        int j=0;
+        for(int i=0;i<n;i++){
+            if(nums[i] % 2 == 0){
+                int temp = nums[i];
+                nums[i] = nums[j];
+                nums[j] = temp;
+                j++;
+            }
+        }
+        return nums;
+    }
+}
+
+
 https://leetcode.com/problems/sort-array-by-parity-ii/description/
 //Take two pointer one on odd index and another one on even index if they met condition then skip by +2 if not then swap with the jth pointer 
 class Solution {
@@ -22,3 +41,4 @@ class Solution {
         
     }
 }
+
