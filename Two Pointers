@@ -15,10 +15,40 @@ class Solution {
         return nums;
     }
 }
+https://leetcode.com/problems/partition-array-according-to-given-pivot/description/
+DNF - DEUTCH NATIONAL FLAG ALGORITHM WITH TWO POINTER VARIATION 
+class Solution {
+    public int[] pivotArray(int[] nums, int pivot) {
+        int n = nums.length;
+        int[] res = new int[n];
+        int k=0;
+        for(int i=0;i<n;i++){
+            if(nums[i] < pivot){
+                res[k] = nums[i];
+                k++;
+            }
+        }
+         for(int i=0;i<n;i++){
+            if(nums[i] == pivot){
+                res[k] = nums[i];
+                k++;
+            }
+        }
+         for(int i=0;i<n;i++){
+            if(nums[i] > pivot){
+                res[k] = nums[i];
+                k++;
+            }
+        }
+         return res;
+        
+    }
+}
 
 
 https://leetcode.com/problems/sort-array-by-parity-ii/description/
 //Take two pointer one on odd index and another one on even index if they met condition then skip by +2 if not then swap with the jth pointer 
+//here when the condition not met then swap only
 class Solution {
     public int[] sortArrayByParityII(int[] nums) {
         int n  = nums.length;
