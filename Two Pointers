@@ -71,4 +71,40 @@ class Solution {
         
     }
 }
+https://leetcode.com/problems/3sum/description/
+3sum :
+STEP 1 : SORT THE ARRAY
+STEP 2 : APPLY 2 POINTER FROM INDEX 1 WHILE KEEPING INDEX 0 CONSTANT 
+class Solution {
+    public List<List<Integer>> threeSum(int[] nums) {
+        int n = nums.length;
+        if(nums == null || nums.length < 3){
+            return new ArrayList<>();
+        }      
+        Set<List<Integer>> res = new HashSet<>();
+        Arrays.sort(nums);
 
+        for(int i=0;i<n-2;i++){
+            if(i > 0 && nums[i] == nums[i-1]) continue;
+            int left = i + 1;
+            int right = n - 1;
+            while(left < right){
+                int sum  = nums[i] + nums[left] + nums[right];
+                if(sum == 0){
+                    res.add(Arrays.asList(nums[i],nums[left],nums[right]));
+                    left++;
+                    right--;
+                }else if(sum < 0){
+                    left++;
+                }else{
+                    right--;
+                }
+            
+           
+            }
+        }
+        return new ArrayList<>(res);
+
+        
+    }
+}
