@@ -108,3 +108,49 @@ class Solution {
         
     }
 }
+https://leetcode.com/problems/next-permutation/
+To find the next permutation revrison do this three step on the following dry run 
+arr = [2,1,5,4,3,0,0]
+1) Try to find the longest prefix match just like rax and rbx  (Try to find the breakpoint from here you get the longest permutation after that )
+2) Just try to finid the number grater than the current not that big not such that small just that big only
+3) Reverse the array by placing them in sorted manner .
+
+class Solution {
+    private void reverse(int[] nums,int bp){
+        int s = bp;
+        int e = nums.length-1;
+        while(s < e){
+            int temp = nums[s];
+            nums[s] = nums[e];
+            nums[e] = temp;
+            s++;
+            e--;
+        }
+
+    }
+    public void nextPermutation(int[] nums) {
+      int n = nums.length; 
+      //try to findd the breakpoint 
+      int bp = 0;
+      for(int i = n - 1 ; i > 0 ; i--){
+        if(nums[i] > nums[i-1]){
+            bp = i;
+            break;
+        }
+      }
+      //now find the element just greater than the bp to find the next permutation
+       if(bp != 0){
+        for(int i=n-1 ; i >= bp ; i--){
+            if(nums[i] > nums[bp-1]){
+                int temp = nums[i];
+                nums[i] = nums[bp-1];
+                nums[bp-1] = temp;
+                break;
+            }
+
+        }
+       }
+       reverse(nums,bp);
+       //revrese code
+    }
+}
