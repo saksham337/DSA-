@@ -187,3 +187,25 @@ class Solution {
         
     }
 }
+https://leetcode.com/problems/di-string-match/
+TAKE TWO POINTER ONE START AT l = 0;and r = n;
+IF ENCOUNTER I THEN PUT ITS INDEX IN POINTER AND INCREMENT IT AND IF ENCOUNTER D PUT IT IN ANS INDEX AND DECREAMENT THE POINTER .
+class Solution {
+    public int[] diStringMatch(String s) {
+        int n = s.length();
+        int[] ans = new int[n+1];
+        int l = 0;
+        int r = n;
+
+      for(int i=0;i<n;i++){
+        if(s.charAt(i) == 'I') {
+            ans[i] = l++;
+        }else{   
+            ans[i] = r--;
+        }
+      }
+      ans[n] = l;
+      return ans;
+        
+    }
+}
